@@ -51,7 +51,7 @@ class Grid:
                 ...
         return res
 
-    def apply_rules(self, cell: int, neighborhood: dict[int, int], rules: list[...]) -> int:
+    def apply_rules(self, cell: int, neighborhood: dict[int, int]) -> int:
         # TODO: implement rules
         match self.rules:
             case _:
@@ -60,7 +60,7 @@ class Grid:
     def generate_next_grid(self) -> 'Grid':
         grid = Grid(self.rules, 0, self.states, self.width, self.height, self.wrap, self.diagonal)
         grid.data = [
-            self.apply_rules(cell, self.get_surrounding(index), self.rules)
+            self.apply_rules(cell, self.get_surrounding(index))
             for index, cell in enumerate(self.data)
         ]
         return grid
